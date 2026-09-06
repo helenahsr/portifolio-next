@@ -29,7 +29,7 @@ export const formacoes: Formacao[] = [
     curso: "Técnico em Informática",
     nivel: "Ensino Médio Técnico",
     instituicao: "Colégio COTEMIG",
-    periodo: "2020 — 2022",
+    periodo: "2021 — 2023",
     situacao: "Concluído",
     progresso: 100,
     destaques: [
