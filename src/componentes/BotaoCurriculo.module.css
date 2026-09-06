@@ -1,0 +1,60 @@
+.botao {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-total);
+  background: linear-gradient(180deg, rgba(17, 26, 43, 0.94), rgba(9, 15, 27, 0.92));
+  backdrop-filter: blur(14px);
+  color: var(--cor-texto-suave);
+  box-shadow: 0 20px 42px -26px rgba(0, 0, 0, 0.95);
+  transition: color var(--transicao), border-color var(--transicao), gap var(--transicao),
+    box-shadow var(--transicao), transform var(--transicao);
+}
+
+.botao svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.rotulo {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transition: max-width var(--transicao), opacity var(--transicao);
+}
+
+.botao:hover,
+.botao:focus-visible {
+  color: var(--cor-destaque);
+  border-color: rgba(34, 211, 238, 0.55);
+  gap: 10px;
+  transform: translateY(-2px);
+  box-shadow: 0 22px 46px -22px rgba(34, 211, 238, 0.45);
+}
+
+.botao:hover .rotulo,
+.botao:focus-visible .rotulo {
+  max-width: 100px;
+  opacity: 1;
+}
+
+@media (max-width: 860px) {
+  .botao {
+    right: 18px;
+    bottom: 18px;
+    height: 50px;
+    padding: 0 14px;
+  }
+}

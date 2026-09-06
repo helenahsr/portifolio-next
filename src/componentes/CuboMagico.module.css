@@ -1,0 +1,99 @@
+.envoltorio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.palco {
+  position: relative;
+  width: 100%;
+  height: clamp(330px, 60vh, 600px);
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.palcoArrastando {
+  cursor: grabbing;
+}
+
+.brilho {
+  position: absolute;
+  inset: 12% 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 55% 60%, rgba(34, 211, 238, 0.16), rgba(8, 145, 178, 0.06) 45%, transparent 74%);
+  filter: blur(38px);
+  animation: respirar 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.tela {
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 62%, transparent 92%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 62%, transparent 92%);
+}
+
+.controles {
+  display: flex;
+  gap: 12px;
+}
+
+.botaoControle {
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-total);
+  background: rgba(148, 176, 214, 0.05);
+  color: var(--cor-texto-suave);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color var(--transicao), border-color var(--transicao), background var(--transicao),
+    transform var(--transicao);
+}
+
+.botaoControle:hover {
+  color: var(--cor-destaque);
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.07);
+  transform: translateY(-1px);
+}
+
+.botaoControle:active {
+  transform: translateY(0);
+}
+
+.dica {
+  max-width: 42ch;
+  color: var(--cor-texto-tenue);
+  font-size: 0.76rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 900px) {
+  .palco {
+    height: clamp(300px, 44vh, 420px);
+  }
+
+  .dica {
+    max-width: 30ch;
+  }
+}

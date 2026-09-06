@@ -1,0 +1,251 @@
+.linhaTempo {
+  --espaco-tempo: 56px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 8px 0 20px;
+}
+
+.linhaTempo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-1px);
+  border-left: 2px dashed rgba(148, 176, 214, 0.34);
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espaco-tempo);
+  align-items: end;
+  animation: aproximar 780ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.itemEsquerda .cartaoExperiencia {
+  grid-column: 1;
+}
+
+.itemEsquerda .marcador {
+  grid-column: 2;
+  justify-self: start;
+}
+
+.itemDireita .cartaoExperiencia {
+  grid-column: 2;
+}
+
+.itemDireita .marcador {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.cartaoExperiencia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cargo {
+  font-size: 1.24rem;
+  letter-spacing: -0.015em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 4px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+.metaItem svg {
+  width: 16px;
+  height: 16px;
+  color: var(--cor-destaque);
+  flex: none;
+}
+
+.atividades {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.atividades li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--cor-texto-suave);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.atividades li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(148, 176, 214, 0.6);
+}
+
+.marcador {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.ponto {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cor-destaque);
+  box-shadow: 0 0 0 4px rgba(5, 8, 15, 0.9), 0 0 14px rgba(34, 211, 238, 0.7);
+  transform: translateY(-50%);
+}
+
+.pontoAtual {
+  animation: pulsarPonto 2.6s ease-out infinite;
+}
+
+.itemEsquerda .ponto {
+  left: calc(-1 * var(--espaco-tempo) / 2 - 6px);
+}
+
+.itemDireita .ponto {
+  right: calc(-1 * var(--espaco-tempo) / 2 - 6px);
+}
+
+.caixaPeriodo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 22px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+  background: var(--cor-fundo-cartao);
+  box-shadow: 0 18px 40px -32px rgba(0, 0, 0, 0.9);
+}
+
+.inicio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-texto-tenue);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.inicio svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.fim {
+  font-family: var(--fonte-titulo), sans-serif;
+  font-size: 1.16rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.fimAtual {
+  color: var(--cor-destaque);
+  text-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+}
+
+@keyframes aproximar {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulsarPonto {
+  0% {
+    box-shadow: 0 0 0 4px rgba(5, 8, 15, 0.9), 0 0 0 4px rgba(34, 211, 238, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 4px rgba(5, 8, 15, 0.9), 0 0 0 16px rgba(34, 211, 238, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 4px rgba(5, 8, 15, 0.9), 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .linhaTempo {
+    --espaco-tempo: 26px;
+    gap: 46px;
+  }
+
+  .linhaTempo::before {
+    left: 6px;
+    transform: none;
+  }
+
+  .item,
+  .itemEsquerda,
+  .itemDireita {
+    grid-template-columns: 1fr;
+    padding-left: 34px;
+    gap: 16px;
+  }
+
+  .itemEsquerda .cartaoExperiencia,
+  .itemDireita .cartaoExperiencia {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .itemEsquerda .marcador,
+  .itemDireita .marcador {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin-bottom: 0;
+  }
+
+  .caixaPeriodo {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+  }
+
+  .itemEsquerda .ponto,
+  .itemDireita .ponto {
+    left: -34px;
+    right: auto;
+  }
+
+  .fim {
+    font-size: 1rem;
+  }
+}

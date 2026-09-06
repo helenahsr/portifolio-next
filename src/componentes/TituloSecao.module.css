@@ -1,0 +1,43 @@
+.bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 52px;
+  animation: surgir 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.titulo {
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.destaque {
+  color: var(--cor-destaque);
+}
+
+.risco {
+  width: 118px;
+  height: 3px;
+  border-radius: var(--raio-total);
+  background: linear-gradient(90deg, var(--cor-destaque), rgba(34, 211, 238, 0));
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.5);
+}
+
+.descricao {
+  max-width: 62ch;
+  color: var(--cor-texto-suave);
+  font-size: 1.02rem;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
